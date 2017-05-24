@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  if error
+    p Error getting content.
+  else
+    p There are !{data.order_count} records available.
+    p Please input a serial number:
+    
+    form(method='POST' action='')
+    div.form-group
+      label(for='name') Serial Number:
+      input#name.form-control(type='text', name='name')
+    button.btn.btn-primary(type='submit') Submit

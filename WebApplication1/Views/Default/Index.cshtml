@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    div.help-block {
+        background-color: darkseagreen;
+        padding: 10px;
+        display: none;
+        margin-left:5%;
+    }
+    span.help-block:hover + div.help-block {
+        display: block;
+    }
+    span.help-block {
+        margin-left:5%;
+    }
+    label {
+    /* Other styling.. */
+    text-align: right;
+    clear: both;
+    float:left;
+    margin-right:15px;
+}
+    form {
+        padding-left:35%;
+    }
+</style>
+<br />
+<br />
+<hr />
+<form class="form-inline" role="search" action="/Default/Search" method="post">
+        <div class="form-group">
+            <label for="text">Serial Number: </label>
+                <input id="search" name="text" type="text" placeholder="" class="form-control input-md" required="">
+                    <button id="submit" name="submit" class="btn btn-default">Submit</button>
+            <br />
+        </div>
+</form>
+<br />
+<br />
+<span class="col-md-12 help-block">help</span>
+<div class="col-md-6 help-block">Please enter the 2 alphabetical + 5 digit Serial Number to look up authenticity.</div>
+<br />
+<br />
+<br />

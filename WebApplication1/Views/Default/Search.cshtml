@@ -1,0 +1,79 @@
+﻿@using WebApplication1.Models
+@model Order
+@{
+    ViewBag.Title = "Results";
+}
+<style>
+    .content-box-blue {
+    background-color: #eaecf0;
+    border: 1px solid #b9c4e2;
+    padding: 15px 20px;
+    margin: 20px 0;
+}
+
+</style>
+<h2>Search Results</h2>
+<a href="@Url.Action("Index", "Default")"><button class="btn btn-default">Search Again</button></a>
+<br />
+<hr />
+
+@if (Model != null)
+{
+    var siteURL = "";
+
+    <div class="table-responsive">
+        <table class="table table-hover table-striped">
+            <tr>
+                <th>Serial Number: </th>
+                <td>@Model.SerialNumber_ID</td>
+            </tr>
+            <tr>
+                <th>Owned By: </th>
+                <td>@Model.CustomerID</td>
+            </tr>
+            <th>Order Date: </th>
+            <td>@Model.OrderDate</td>
+            <tr>
+                <th>Order Number: </th>
+                <td>@Model.OrderNumber</td>
+            </tr>
+            <tr>
+                <th>Order Site: </th>
+
+                @switch (Model.SiteName)
+                {
+                    case "Official Site":
+                        siteURL = "pygmaliondolls.com";
+                        break;
+                    case "FrostBitten UK Dealer":
+                        siteURL = "https://www.frostbittenbjd.co.uk/";
+                        break;
+                    case "Big.BJD Chinese Dealer":
+                        siteURL = "https://bigbjd.world.taobao.com/category-1311509383.htm?spm=a1z10.1-c.0.0.syJjko&search=y&catName=PYGMALION";
+                        break;
+                }
+
+                       <td><a href="@siteURL">@Model.SiteName</a></td>
+            </tr>
+            <tr>
+                <th>Ordered Item: </th>
+                <td>@Model.Description</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <img src="@Model.TypeURL" />
+                </td>
+            </tr>
+        </table>
+    </div>
+}
+else
+{
+    <div class="content-box-blue">
+        <p>Cannot find Serial Number in our system.</p>
+        <p>Please check again to see if you typed it correctly.</p>
+        <p>If you keep seeing this message even with a correct code, please contact us.</p>
+        <p><a href="mailto:dollpygmalion@gmail.com">Email</a> or create a post at our <a href="http://pygmaliondolls.com/board/qa/6/?is_pcver=T">Q&A board</a>.</p>
+    </div>
+    <br />
+}
